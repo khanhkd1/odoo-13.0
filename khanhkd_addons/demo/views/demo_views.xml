@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="demo_model_form_view">
+            <field name="name">khanhkd1.demo.form.view</field>
+            <field name="model">khanhkd1.demo</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="demo_model_tree_view" model="ir.ui.view">
+            <field name="name">khanhkd1.demo.tree.view</field>
+            <field name="model">khanhkd1.demo</field>
+            <field name="arch" type="xml">
+                <tree string="Demo" default_order="create_date desc">
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="demo_model_action">
+            <field name="name">My Models</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">khanhkd1.demo</field>
+            <field name="view_mode">tree,form</field>
+            <!-- <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('demo_model_tree_view')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('demo_model_form_view')})]"/> -->
+        </record>
+
+        <menuitem id="menu_demo"
+            name="Demo model"
+            action="demo_model_action"
+            sequence="10"/>
+    </data>
+</odoo>
